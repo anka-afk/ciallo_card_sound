@@ -1,0 +1,45 @@
+[manifest]
+version = "1.0.0"
+priority = 0
+dump_lua = true
+
+[[patches]]
+[patches.pattern]
+target = "blind.lua"
+pattern = "play_sound('chips1', math.random()*0.1 + 0.55, 0.12)"
+position = "at"
+payload = '''
+play_sound('chips1')
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "blind.lua"
+pattern = "if blind then play_sound('chips1', math.random()*0.1 + 0.55, 0.42);play_sound('gold_seal', math.random()*0.1 + 1.85, 0.26)--play_sound('cancel')"
+position = "at"
+payload = '''
+if blind then play_sound('chips1');play_sound('gold_seal', math.random()*0.1 + 1.85, 0.26)--play_sound('cancel')
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "play_sound('chips1', math.random()*0.1 + 0.55, 0.12)"
+position = "at"
+payload = '''
+play_sound('chips1')
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = "play_sound('chips1', math.random()*0.1 + 0.55, 0.12)"
+position = "at"
+payload = '''
+play_sound('chips1')
+'''
+match_indent = true
+
